@@ -136,6 +136,23 @@ export default function Register() {
             <p className="auth-subtitle">Sign up to get started</p>
             </div>
 
+            <form onSubmit={handleSubmit} className="auth-form">
+            <div className="form-group">
+                <label className="form-label">Full Name</label>
+                <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={`form-input ${errors.name ? 'input-error' : ''}`}
+                placeholder="Enter your name"
+                />
+                {errors.name && <span className="error-text">{errors.name}</span>}
+            </div>
+
+            
+            </form>
+
             
         </div>
         </div>
