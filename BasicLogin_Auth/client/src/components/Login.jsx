@@ -112,7 +112,19 @@ export default function Login(){
     };
 
 
-    
+    return (
+        <div className="auth-container">
+            <div className="auth-card">
+                <div className="auth-header">
+                    <h1 className="auth-title">Welcome Back</h1>
+                    <p className="auth-subtitle">Login to your account</p>
+                </div>
+                
+
+                
+            </div>
+        </div>
+    );
  };
 
  
