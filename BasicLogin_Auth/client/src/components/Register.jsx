@@ -113,5 +113,20 @@ export default function Register() {
         }
     };
 
+    const handleFacebookLogin = async () => {
+        try {
+        setLoading(true);
+        const data = await facebookLogin();
+        if (data.success) {
+            login(data.user, data.token);
+            navigate('/dashboard');
+        }
+        } catch (error) {
+        setMessage('Facebook login failed');
+        } finally {
+        setLoading(false);
+        }
+    };
+
     
 }
