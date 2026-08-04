@@ -68,5 +68,35 @@ export default function Register() {
         return Object.keys(newErrors).length === 0;
     };
 
-   
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setMessage('');
+
+        if (!validateForm()) {
+        return;
+        }
+
+        setLoading(true);
+
+        try {
+        const data = await registerUser({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password
+        });
+
+        if (data.success) {
+            setMessage('Registration successful! Please verify your email.');
+            setTimeout(() => navigate('/verify-email', { state: { email: formData.email } }), 2000);
+        } else {
+            setMessage(data.message || 'Registration failed');
+        }
+        } catch (error) {
+        setMessage(error.message || 'Error connecting to server');
+        } finally {
+        setLoading(false);
+        }
+    };
+
+
 }
