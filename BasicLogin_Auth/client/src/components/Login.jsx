@@ -44,8 +44,6 @@ export default function Login(){
         return Object.keys(newErrors).length === 0;
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
 
     
 
