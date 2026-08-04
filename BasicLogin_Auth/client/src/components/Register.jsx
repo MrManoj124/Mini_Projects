@@ -21,5 +21,21 @@ export default function Register() {
     const [loading, setLoading] = useState(false);
     const [passwordStrength, setPasswordStrength] = useState('');
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+        
+        // Clear error when user types
+        if (errors[name]) {
+        setErrors({ ...errors, [name]: '' });
+        }
+
+        // Check password strength in real-time
+        if (name === 'password') {
+        const strength = checkPasswordStrength(value);
+        setPasswordStrength(strength);
+        }
+    };
+
     
 }
