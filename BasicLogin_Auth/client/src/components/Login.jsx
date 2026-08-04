@@ -44,6 +44,9 @@ export default function Login(){
         return Object.keys(newErrors).length === 0;
     }
 
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage('');
@@ -74,7 +77,22 @@ export default function Login(){
         }
     };
 
-    
+    const handleGoogleLogin = async () => {
+        try{
+            setLoading(true);
+            const data = await googleLogin();
+            if(data.success){
+                login(data.user, data.token);
+                navigate('/dashboard');
+            }
+        }
+        catch(error){
+            setMessage('Google login failed');
+        }
+        finally{
+            setLoading(false);
+        }
+    };
 
     
 
