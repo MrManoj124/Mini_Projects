@@ -98,5 +98,20 @@ export default function Register() {
         }
     };
 
+    const handleGoogleLogin = async () => {
+        try {
+        setLoading(true);
+        const data = await googleLogin();
+        if (data.success) {
+            login(data.user, data.token);
+            navigate('/dashboard');
+        }
+        } catch (error) {
+        setMessage('Google login failed');
+        } finally {
+        setLoading(false);
+        }
+    };
 
+    
 }
