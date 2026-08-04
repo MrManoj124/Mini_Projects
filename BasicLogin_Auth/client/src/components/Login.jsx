@@ -119,7 +119,42 @@ export default function Login(){
                     <h1 className="auth-title">Welcome Back</h1>
                     <p className="auth-subtitle">Login to your account</p>
                 </div>
-                
+                <form onSubmit={handleSubmit} className="auth-form">
+                    <div className="form-group">
+                        <label className="form-label">Email Address</label>
+                        <input type="email"
+                            name = "email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className={`form-input ${errors.email ? 'input-error' : ''}`}
+                            placeholder="Enter your email"
+                        />
+                        {errors.email && <span className="error-text">{errors.email}</span>}
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            className={`form-input ${errors.password ? 'input-error' : ''}`}
+                            placeholder="Enter your password"
+                        />
+                        {errors.password && <span className="error-text">{errors.password}</span>}
+                    </div>
+
+                    {message && (
+                        <div className={`message ${message.includes('successful') ? 'message-success' : 'message-error'}`}>
+                            {message}
+                        </div>
+                    )}
+
+                    <button type="submit" className="submit-button" disabled={loading}>
+                        {loading ? 'Logging in...' : 'Login'}
+                    </button>
+                </form>
 
                 
             </div>
