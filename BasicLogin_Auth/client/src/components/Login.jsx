@@ -44,8 +44,35 @@ export default function Login(){
         return Object.keys(newErrors).length === 0;
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setMessage('');
 
-    
+        if(!validateForm()) {
+            return;
+        }
+
+        setLoading(true);
+
+        try{
+            const data = await loginUser(formData);
+
+            if(data.success){
+                setMessage('Login Successful!');
+                login(data.user, data.token);
+                setTimeout(() => navigate('/dashboard'), 1500);
+            }
+            else{
+                setMessage(data.message || 'Login failed');
+            }
+        }
+        catch(error){
+            setMessage(error.message || 'Error connecting to server');
+        }
+        finally{
+            setLoading(false);
+        }
+    };
 
     
 
