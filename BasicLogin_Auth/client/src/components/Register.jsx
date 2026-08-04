@@ -150,7 +150,64 @@ export default function Register() {
                 {errors.name && <span className="error-text">{errors.name}</span>}
             </div>
 
-            
+            <div className="form-group">
+                <label className="form-label">Email Address</label>
+                <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`form-input ${errors.email ? 'input-error' : ''}`}
+                placeholder="Enter your email"
+                />
+                {errors.email && <span className="error-text">{errors.email}</span>}
+            </div>
+
+            <div className="form-group">
+                <label className="form-label">Password</label>
+                <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className={`form-input ${errors.password ? 'input-error' : ''}`}
+                placeholder="Enter your password"
+                />
+                {formData.password && (
+                <div className={`password-strength-bar ${passwordStrength}`}>
+                    <div className="strength-indicator"></div>
+                </div>
+                )}
+                {formData.password && (
+                <span className={`strength-text ${passwordStrength}`}>
+                    Password strength: {passwordStrength}
+                </span>
+                )}
+                {errors.password && <span className="error-text">{errors.password}</span>}
+            </div>
+
+            <div className="form-group">
+                <label className="form-label">Confirm Password</label>
+                <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className={`form-input ${errors.confirmPassword ? 'input-error' : ''}`}
+                placeholder="Confirm your password"
+                />
+                {errors.confirmPassword && <span className="error-text">{errors.confirmPassword}</span>}
+            </div>
+
+            {message && (
+                <div className={`message ${message.includes('successful') ? 'message-success' : 'message-error'}`}>
+                {message}
+                </div>
+            )}
+
+            <button type="submit" className="submit-button" disabled={loading}>
+                {loading ? 'Creating Account...' : 'Register'}
+            </button>
             </form>
 
             
