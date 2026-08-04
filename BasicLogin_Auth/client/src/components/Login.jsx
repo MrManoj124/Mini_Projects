@@ -13,7 +13,15 @@ export default function Login(){
     const [message, setMessage] = useState({});
     const [loading, setLoading] = useState({});
 
-    
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setFormData({...formData, [name] : value});
+
+        // Clear error when user types
+        if(errors[name]){
+            setErrors({...errors, [name] : ''});   
+        }
+    };
 
     
 
