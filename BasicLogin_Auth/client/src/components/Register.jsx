@@ -37,5 +37,36 @@ export default function Register() {
         }
     };
 
-    
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!formData.name) {
+        newErrors.name = 'Name is required';
+        } else if (formData.name.length < 2) {
+        newErrors.name = 'Name must be at least 2 characters';
+        }
+
+        if (!formData.email) {
+        newErrors.email = 'Email is required';
+        } else if (!validateEmail(formData.email)) {
+        newErrors.email = 'Invalid email format';
+        }
+
+        if (!formData.password) {
+        newErrors.password = 'Password is required';
+        } else if (formData.password.length < 6) {
+        newErrors.password = 'Password must be at least 6 characters';
+        }
+
+        if (!formData.confirmPassword) {
+        newErrors.confirmPassword = 'Please confirm your password';
+        } else if (formData.password !== formData.confirmPassword) {
+        newErrors.confirmPassword = 'Passwords do not match';
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+   
 }
