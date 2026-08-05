@@ -57,6 +57,30 @@ export default function Dashboard(){
                     <button className="card-button">View Messages</button>
                 </div>
             </div>
+
+            <div className="user-info-section">
+                <h2>Account Information</h2>
+                <div className="info-grid">
+                    <div className="info-item">
+                        <span className="info-label">Name :</span>
+                        <span className="info-value">{user?.name}</span>
+                    </div>
+                    <div className="info-item">
+                        <span className="info-label">Email :</span>
+                        <span className="info-value">{user?.email}</span>
+                    </div>
+                    <div className="info-item">
+                        <span className="info-label">Account Status :</span>
+                        <span className="info-value status-active">Active</span>
+                    </div>
+                    <div className="info-item">
+                        <span className="info-label">Member Since : </span>
+                        <span className="info-value">
+                            {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
