@@ -9,5 +9,9 @@ export default function VerifyEmail(){
     const location = useLocation();
     const token = searchParams.get('token');
     const emailFromState = location.state?.email;
-    
+
+    const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [verified, setVerified] = useState(false);
+    const [resending, setResending] = useState(false);
 }
