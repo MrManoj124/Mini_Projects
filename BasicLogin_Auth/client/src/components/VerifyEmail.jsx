@@ -14,4 +14,12 @@ export default function VerifyEmail(){
     const [loading, setLoading] = useState(true);
     const [verified, setVerified] = useState(false);
     const [resending, setResending] = useState(false);
+
+    useEffect(() => {
+    if (token) {
+      verifyEmailToken();
+    } else {
+      setLoading(false);
+    }
+  }, [token]);
 }
