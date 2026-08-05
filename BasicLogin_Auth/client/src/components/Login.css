@@ -14,6 +14,17 @@
   animation: slideDown 0.3s ease;
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Social login buttons */
 .divider {
   display: flex;
