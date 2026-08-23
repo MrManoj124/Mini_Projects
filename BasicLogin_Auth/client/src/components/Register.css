@@ -90,3 +90,53 @@
 .facebook-button {
   color: #1877F2;
 }
+
+/* Password strength indicator */
+.password-strength-bar {
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.strength-indicator {
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.password-strength-bar.weak .strength-indicator {
+  width: 33%;
+  background: #fc8181;
+}
+
+.password-strength-bar.medium .strength-indicator {
+  width: 66%;
+  background: #f6ad55;
+}
+
+.password-strength-bar.strong .strength-indicator {
+  width: 100%;
+  background: #68d391;
+}
+
+.strength-text {
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  font-weight: 500;
+}
+
+.strength-text.weak {
+  color: #e53e3e;
+}
+
+.strength-text.medium {
+  color: #dd6b20;
+}
+
+.strength-text.strong {
+  color: #2f855a;
+}
