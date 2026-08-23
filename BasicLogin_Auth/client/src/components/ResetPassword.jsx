@@ -23,7 +23,16 @@ export const resetPassword = async(req,res) => {
             });
         }
 
-        
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(password, salt);
+        user.resetPasswordToken = undefined;
+        user.reserPasswordExpires = undefined;
+        await user.save();
+
+        res.json({
+            success : true,
+            message : 'Password reset successful. You can now login with your new password.'
+        });
     }
     
 };
