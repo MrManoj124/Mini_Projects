@@ -22,4 +22,8 @@ export default function VerifyEmail(){
       setLoading(false);
     }
   }, [token]);
+
+  
 }
+
+
