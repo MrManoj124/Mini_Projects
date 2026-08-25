@@ -19,3 +19,15 @@ connectDB();
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+
+// Middleware
+app.use(express.json());
+app.use(cors({
+  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  credentials: true
+}));
+
+// Routes
+app.use('/api', authRoutes);
+app.use('/api/user', userRoutes);
