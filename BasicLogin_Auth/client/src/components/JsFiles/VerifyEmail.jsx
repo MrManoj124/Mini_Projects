@@ -50,7 +50,19 @@ export default function VerifyEmail(){
     setResending(true);
     setMessage('');
 
-    try{
+    try {
+      const data = await sendVerificationEmail(emailFromState);
+
+      if (data.success) {
+        setMessage('✓ Verification email sent! Please check your inbox.');
+      } else {
+        setMessage(data.message || 'Failed to send email');
+      }
+    } catch (error) {
+      setMessage('Error sending verification email');
+    } finally {
+      setResending(false);
+    }try{
       const data = await sendVerificationEmail(emailFromState);
     }
   }
