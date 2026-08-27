@@ -23,7 +23,37 @@ export default function VerifyEmail(){
     }
   }, [token]);
 
-  
+  const verifyEmailToken = async () => {
+    try{
+      const data = await verifyEmail(token);
+
+      if(data.success){
+        setMessage('✓ Email verified successfully!');
+        setVerified(true);
+        setTimeout(() => navigate('/login'), 3000);
+      }else{
+        setMessage(data.message || 'Verification failed');
+      }
+    }catch(error){
+      setMessage('Error verifying email');
+    }finally{
+      setLoading(false);
+    }
+  };
+
+  const handleResentEmail = async () => {
+    if(!emailFromState){
+      setMessage('Email address not found');
+      return;
+    }
+
+    setResending(true);
+    setMessage('');
+
+    try{
+      const data = await sendVerificationEmail(emailFromState);
+    }
+  }
 }
 
 
