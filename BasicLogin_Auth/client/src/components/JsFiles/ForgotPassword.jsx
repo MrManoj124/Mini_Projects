@@ -76,10 +76,21 @@ export default function ForgotPassword(){
                             {loading ? 'Sending...' : 'Send Reset Link'}
                            </button>
                     </form>
-                ) 
+                ) : (
+                    <div className="success-container">
+                        <div className="success-icon">✓</div>
+                        <p className="success-message">
+                            We've sent a password reset link to <strong>{email}</strong>
+                        </p>
+                        <p className="info-text">
+                            Please check your email and click the link to reset your password.
+                            The link will expire in 1 hour.
+                        </p>
+                    </div>
+                )}
 
                 
-            </div>
+         
         </div>
     );
 }
