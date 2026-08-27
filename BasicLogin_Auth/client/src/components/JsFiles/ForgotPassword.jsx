@@ -16,6 +16,21 @@ export default function ForgotPassword(){
         e.preventDefault();
         setError('');
         setMessage('');
+
+        if(!email){
+            setError('Email is required');
+            return;
+        }
+
+        if(!validateEmail(email)){
+            setError('Invalid email format');
+            return;
+        }
+
+        setLoading(true);
+
         
-    }
+    };
+
+    
 }
