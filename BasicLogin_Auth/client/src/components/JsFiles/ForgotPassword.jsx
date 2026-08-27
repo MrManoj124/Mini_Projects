@@ -49,8 +49,34 @@ export default function ForgotPassword(){
     return (
         <div className="auth-container">
             <div className="auth-card">
-                
-                )}
+                <div className="auth-header">
+                    <h1 className="auth-title">Forgot Password?</h1>
+                    <p className="auth-subtitle">
+                        {emailSent ? 'Check your email for reset instructions'
+                        : 'Enter your email to receive a password reset link'}
+                    </p>
+                </div>
+
+                {!emailSent ? (
+                    <form onSubmit={handleSubmit} className="auth-form">
+                        <div className="form-group">
+                            <label className="form-label">Email Address</label>
+                                <input type="email" name="email" value={email} 
+                                onChange={(e) => setEmail(e.target.value)}
+                                className={`form-input ${error ? 'input-error' : ''}`}
+                                placeholder="Enter your email"/>
+                                {error && <span className="error-text">{error}</span>}
+                           </div>
+                           {message && (
+                            <div className="message message-success">
+                                {message}
+                            </div>
+                           )}
+                           <button type="submit" className="submit-button" disabled={loading}>
+                            {loading ? 'Sending...' : 'Send Reset Link'}
+                           </button>
+                    </form>
+                ) 
 
                 
             </div>
