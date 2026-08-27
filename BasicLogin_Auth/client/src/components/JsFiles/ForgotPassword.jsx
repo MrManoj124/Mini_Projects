@@ -46,5 +46,14 @@ export default function ForgotPassword(){
         }
     };
 
-    
+    return (
+        <div className="auth-container">
+            <div className="auth-card">
+                
+                )}
+
+                
+            </div>
+        </div>
+    );
 }
