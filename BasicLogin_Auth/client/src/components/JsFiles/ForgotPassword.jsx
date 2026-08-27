@@ -89,7 +89,11 @@ export default function ForgotPassword(){
                     </div>
                 )}
 
-                
+                <div className="auth-footer">
+                    <button onClick={() => navigate('/login')} className="link-button">
+                        ← Back to Login
+                    </button>
+                </div>
             </div>
         </div>
     );
