@@ -29,7 +29,21 @@ export default function ForgotPassword(){
 
         setLoading(true);
 
-        
+        try{
+            const data = await requestPasswordReset(email);
+
+            if(data.success){
+                setMessage('Password reset link has been sent to your email!');
+                setEmailSent(true);
+            }
+            else{
+                setError(data.message || 'Failed to send reset email');
+            }
+        }catch{
+            setError('Error connecting to server');
+        }finally{
+            setLoading(false);
+        }
     };
 
     
