@@ -76,5 +76,18 @@ export default function VerifyEmail(){
     );
   }
 
-  
+  return (
+    <div className="auth-container">
+      <div className="auth-card">
+        <div className="auth-header">
+          <h1 className="auth-title">
+            {verified ? 'Email Verified!' : 'Verify Your Email'}
+          </h1>
+        </div>
+
+        
+        
+      </div>
+    </div>
+  );
 }
