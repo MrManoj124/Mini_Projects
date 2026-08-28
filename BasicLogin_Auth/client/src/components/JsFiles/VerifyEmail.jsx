@@ -63,7 +63,17 @@ export default function VerifyEmail(){
     }
   };
 
-  
+  if (loading) {
+    return (
+      <div className="auth-container">
+        <div className="auth-card">
+          <div className="loading-container">
+            <div className="spinner"></div>
+            <p>Verifying your email...</p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   
