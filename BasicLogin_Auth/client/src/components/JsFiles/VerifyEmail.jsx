@@ -15,34 +15,32 @@ export default function VerifyEmail(){
     const [verified, setVerified] = useState(false);
     const [resending, setResending] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     if (token) {
       verifyEmailToken();
-    } else {
-      setLoading(false);
     }
   }, [token]);
 
   const verifyEmailToken = async () => {
-    try{
+    try {
       const data = await verifyEmail(token);
 
-      if(data.success){
+      if (data.success) {
         setMessage('✓ Email verified successfully!');
         setVerified(true);
         setTimeout(() => navigate('/login'), 3000);
-      }else{
+      } else {
         setMessage(data.message || 'Verification failed');
       }
-    }catch(error){
+    } catch (error) {
       setMessage('Error verifying email');
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
 
-  const handleResentEmail = async () => {
-    if(!emailFromState){
+  const handleResendEmail = async () => {
+    if (!emailFromState) {
       setMessage('Email address not found');
       return;
     }
@@ -62,10 +60,11 @@ export default function VerifyEmail(){
       setMessage('Error sending verification email');
     } finally {
       setResending(false);
-    }try{
-      const data = await sendVerificationEmail(emailFromState);
     }
+  };
+
+  
   }
+
+  
 }
-
-
