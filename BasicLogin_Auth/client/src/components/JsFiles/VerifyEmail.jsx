@@ -102,7 +102,23 @@ export default function VerifyEmail(){
                 </button>
               </>
             ) : (
-              
+              <>
+                <div className="info-icon">📧</div>
+                <p className="info-message">
+                  We've sent a verification link to <strong>{emailFromState}</strong>
+                </p>
+                <div className="verification-steps">
+                  <h3>What to do next:</h3>
+                  <ol>
+                    <li>Check your email inbox</li>
+                    <li>Click the verification link</li>
+                    <li>Log in to your account</li>
+                  </ol>
+                </div>
+                <button onClick={handleResendEmail} className="resend-button" disabled={resending}>
+                  {resending ? 'Sending...' : 'Resend Email'}
+                </button>
+              </>
             )}
             {message && (
               <div className={`message ${message.includes('✓') ? 'message-success' : 'message-error'}`}>
