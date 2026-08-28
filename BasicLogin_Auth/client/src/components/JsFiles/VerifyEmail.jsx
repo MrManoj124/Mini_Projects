@@ -85,7 +85,33 @@ export default function VerifyEmail(){
           </h1>
         </div>
 
-        
+        {verified ? (
+          <div className="success-container">
+            <div className="success-icon">✓</div>
+            <p className="success-message">Your account is now active!</p>
+            <p className="info-text">Redirecting to login page...</p>
+          </div>
+        ) : (
+          <div className="verification-container">
+            {token ? (
+              <>
+                <div className="error-icon">✗</div>
+                <p className="error-message">{message}</p>
+                <button onClick={handleResendEmail} className="submit-button" disabled={resending}>
+                  {resending ? 'Sending...' : 'Resend Verification Email'}
+                </button>
+              </>
+            ) : (
+              
+            )}
+            {message && (
+              <div className={`message ${message.includes('✓') ? 'message-success' : 'message-error'}`}>
+                {message}
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="auth-footer">
           <button onClick={() => navigate('/login')} className="link-button">
             ← Back to Login
