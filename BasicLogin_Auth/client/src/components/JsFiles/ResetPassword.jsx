@@ -1,9 +1,13 @@
 import React from "react";
+import {useNavigate, useSearchParams} from 'react-router-dom';
+import {resetPassword} from '../../services/api';
+import {checkPasswordStrength, passwordsMatch} from '../../utils/validation';
+import '../CssFiles/ResetPassword.css';
+
 
 export const resetPassword = async(req,res) => {
     try{
         const{token, password}=req.body;
-
         if(!isValidPassword(password)){
             return res.status(400).json({
                 success : false,
