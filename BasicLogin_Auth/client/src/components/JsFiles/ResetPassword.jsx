@@ -14,5 +14,13 @@ export default function ResetPassword() {
         password : '',
         confirmPassword : ''
     });
+
+    const [errors, setErrors] = useState({});
+    const [message, setMessage]=useState({});
+    const [loading, setLoading]= useState(false);
+    const [passwordStrength, setPasswordStrength]=useState('');
+    const [resetSuccess, setResetSuccess] = useState(false);
+
+    
 }
 
