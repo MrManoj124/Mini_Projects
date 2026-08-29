@@ -41,12 +41,13 @@ export default function ResetPassword() {
         if (!formData.password) {
             newErrors.password = 'Password is required';
         }
+        else if(formData.password.length<8){
+            newErrors.password = 'Password must be at least 8 characters';
+        }
 
         if (!formData.confirmPassword) {
             newErrors.confirmPassword = 'Please confirm your password';
-        }
-
-        if (formData.password !== formData.confirmPassword) {
+        }else if(!passwordsMatch(formData.password, formData.confirmPassword)){
             newErrors.confirmPassword = 'Passwords do not match';
         }
 
