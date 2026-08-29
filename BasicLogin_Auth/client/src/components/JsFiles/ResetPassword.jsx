@@ -51,8 +51,24 @@ export default function ResetPassword() {
             newErrors.confirmPassword = 'Passwords do not match';
         }
 
+        if (formData.password && !checkPasswordStrength(formData.password)) {
+            newErrors.password = 'Password is too weak';
+        }
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
-}
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        setMessage('');
 
+        if(!token){
+            setMessage('Invalid or Expired token.Please request a new reset link');
+            return;
+        }
+        if(!validateForm()){
+            return;
+        }
+        setLoading(true);
+    }
+};
