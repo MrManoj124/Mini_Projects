@@ -70,5 +70,38 @@ export default function ResetPassword() {
             return;
         }
         setLoading(true);
+
+        try{
+            const data = await resetPassword(token, formData.password);
+            if(data.success){
+                setMessage(' Password reset successful!');
+                setResetSuccess(true);
+                setTimeout(() => navigate('/login'),3000);
+            }else{
+                setMessage(data.message || 'Failed to reset password');
+            }
+        }
+        catch(error){
+            setMessage('Error conecting to server');
+        }finally{
+            setLoading(false);
+        }
+    };
+
+    if(!token){
+        return(
+            <div className="auth-container">
+                <div className='auth-card'>
+                    <div className="auth-header">
+                        <h1 className="auth-title">Invalid Link</h1>
+                        <p className="auth-subtitle">This password reset link is invalid or Expired</p>
+                    </div>
+                    <button onClick={() => navigate('/forgot-password')} className="submit-button">Request New Link</button>
+                </div>
+            </div>
+        );
     }
+
+    
+    
 };
