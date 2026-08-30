@@ -110,7 +110,38 @@ export default function ResetPassword() {
           <p className="auth-subtitle">Enter your new password</p>
         </div>
 
-        
+        {!resetSuccess ? (
+          <form onSubmit={handleSubmit} className="auth-form">
+            <div className="form-group">
+              <label className="form-label">New Password</label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className={`form-input ${errors.password ? 'input-error' : ''}`}
+                placeholder="Enter new password"
+              />
+              {formData.password && (
+                <div className={`password-strength-bar ${passwordStrength}`}>
+                  <div className="strength-indicator"></div>
+                </div>
+              )}
+              {formData.password && (
+                <span className={`strength-text ${passwordStrength}`}>
+                  Password strength: {passwordStrength}
+                </span>
+              )}
+              {errors.password && <span className="error-text">{errors.password}</span>}
+            </div>
+
+            
+
+            <button type="submit" className="submit-button" disabled={loading}>
+              {loading ? 'Resetting...' : 'Reset Password'}
+            </button>
+          </form>
+        ) 
       </div>
     </div>
   );
