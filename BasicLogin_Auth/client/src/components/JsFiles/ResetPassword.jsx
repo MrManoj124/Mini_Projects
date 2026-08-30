@@ -135,7 +135,24 @@ export default function ResetPassword() {
               {errors.password && <span className="error-text">{errors.password}</span>}
             </div>
 
-            
+            <div className="form-group">
+              <label className="form-label">Confirm New Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className={`form-input ${errors.confirmPassword ? 'input-error' : ''}`}
+                placeholder="Confirm new password"
+              />
+              {errors.confirmPassword && <span className="error-text">{errors.confirmPassword}</span>}
+            </div>
+
+            {message && (
+              <div className={`message ${message.includes('✓') ? 'message-success' : 'message-error'}`}>
+                {message}
+              </div>
+            )}
 
             <button type="submit" className="submit-button" disabled={loading}>
               {loading ? 'Resetting...' : 'Reset Password'}
