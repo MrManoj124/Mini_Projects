@@ -158,7 +158,19 @@ export default function ResetPassword() {
               {loading ? 'Resetting...' : 'Reset Password'}
             </button>
           </form>
-        ) 
+        ) : (
+          <div className="success-container">
+            <div className="success-icon">✓</div>
+            <p className="success-message">Password reset successful!</p>
+            <p className="info-text">Redirecting to login page...</p>
+          </div>
+        )}
+
+        <div className="auth-footer">
+          <button onClick={() => navigate('/login')} className="link-button">
+            ← Back to Login
+          </button>
+        </div>
       </div>
     </div>
   );
