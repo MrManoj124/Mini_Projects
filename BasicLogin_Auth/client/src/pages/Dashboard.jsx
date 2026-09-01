@@ -19,7 +19,22 @@ export default function Dashboard(){
                     <h1>Welcome, {user?.name}!👋</h1>
                     <p>Here's what's happening with your account today.</p>
                 </div>
-                
+                <div className="dashboard-grid">
+                    <div className="dashboard-card">
+                        <h3>Profile</h3>
+                        <p>Manage your personal information</p>
+                        <button onClick={() => navigate('/profile')} className="card-button">
+                            View Profile
+                        </button>
+                    </div>
+
+                    <div className="dashboard-card">
+                        <div className="card-icon">⚙️</div>
+                        <h3>Settings</h3>
+                        <p>Configure your preferences</p>
+                        <button className="card-button">Open Settings</button>
+                    </div>
+                </div>
 
                 
             </div>
