@@ -58,7 +58,13 @@ export const loginUser = async (credentials) => {
     });
 }
 
-
+//Email verification APIs
+export const sendVerificationEmail = async (email) => {
+    return apiCall('/verify-email/send',{
+        method:'POST',
+        body:JSON.stringify({email}),
+    });
+};
 
 
 
