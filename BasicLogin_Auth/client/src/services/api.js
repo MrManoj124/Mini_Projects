@@ -47,7 +47,7 @@ export const updateUserProfile = async (token, userData) => {
             Authorization:`Bearer ${token}`,
         },
         body:JSON.stringify(userData),
-    }
+    });
 };
 
 
