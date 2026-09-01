@@ -67,4 +67,10 @@ export const sendVerificationEmail = async (email) => {
 };
 
 
+export const verifyEmail = async (token) => {
+    return apiCall('/verify-email/confirm',{
+        method:'POST',
+        body:JSON.stringify({token}),
+    });
+};
 
