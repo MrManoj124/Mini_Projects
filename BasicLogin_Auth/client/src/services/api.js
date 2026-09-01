@@ -31,3 +31,11 @@ export const registerUser = async(userData) => {
 };
 
 
+export const getUserProfile = async (token) =>{
+    return apiCall('/user',{
+        method:'GET',
+        headers:{
+            Authorization:`Bearer ${token}`,
+        },
+    });
+};
