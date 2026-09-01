@@ -79,5 +79,5 @@ export const requestPasswordReset = async (email) => {
     return apiCall('/password-reset/request',{
         method:'POST',
         body:JSON.stringify({email}),
-    );
+    });
 };
