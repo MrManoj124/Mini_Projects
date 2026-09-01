@@ -19,6 +19,15 @@ const apiCall = async (endpoint, options = {}) =>{
         return {success : true, ...data};
     }catch(error){
         return{success : false, message:error.message};
-    
+    }
 };
+
+//Auth APIs
+export const registerUser = async(userData) => {
+    return apiCall('/register',{
+        method : 'POST',
+        body:JSON.stringify(userData),
+    });
+};
+
 
