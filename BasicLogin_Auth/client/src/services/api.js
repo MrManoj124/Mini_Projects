@@ -39,3 +39,20 @@ export const getUserProfile = async (token) =>{
         },
     });
 };
+
+export const updateUserProfile = async (token, userData) => {
+    return apiCall('/user/update',{
+        method:'PUT',
+        headers:{
+            Authorization:`Bearer ${token}`,
+        },
+        body:JSON.stringify(userData),
+    }
+};
+
+
+
+
+
+
+
