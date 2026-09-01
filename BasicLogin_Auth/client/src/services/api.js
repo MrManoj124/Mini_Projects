@@ -51,6 +51,12 @@ export const updateUserProfile = async (token, userData) => {
 };
 
 
+export const loginUser = async (credentials) => {
+    return apiCall('/login',{
+        method:'POST',
+        body:JSON.stringify(credentials),
+    });
+}
 
 
 
