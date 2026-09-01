@@ -1,3 +1,24 @@
 // Local API functions
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
+// Helper function for API calls
+const apiCall = async (endpoint, options = {}) =>{
+    try{
+        const response = await fetch(`${API_URL}${endpoint}`,{
+            headers:{
+                'Content-Type':'application/json',
+                ...options.headers,
+            },
+            ...options,
+        });
+        const data = await response.json();
+        if(!response.ok){
+            throw new Error(data.message || 'Something went wrong');  
+        }
+
+        return {success : true, ...data};
+    }catch(error){
+        return{success : false, message:error.message};
+    
+};
+
