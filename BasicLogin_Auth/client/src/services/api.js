@@ -81,3 +81,25 @@ export const requestPasswordReset = async (email) => {
         body:JSON.stringify({email}),
     });
 };
+
+
+// Password reset confirmation
+export const resetPassword = async (token, newPassword) =>{
+    return apiCall('/password-reset',{
+        method:'POST',
+        body:JSON.stringify({token, password:newPassword}),
+    });
+};
+
+
+// Change password API
+export const changePassword = async (token, oldPassword, newPassword) =>{
+    return apiCall('/user/change-password',{
+        method:'POST',
+        headers:{
+            Authorization:`Bearer ${token}`,
+        },
+        body:JSON.stringify({oldPassword, newPassword}),
+    });
+};
+
