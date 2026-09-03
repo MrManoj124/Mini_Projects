@@ -36,3 +36,16 @@ export const validatePasswordMatch = (password, confirmPassword) => {
 export const sanitizeInput = (input) => {
     return input.trim().replace(/</g, "&lt;").replace(/>/g, "&gt;");
 };
+
+//Debounce function to limit the rate of function execution
+export const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+        const later =() => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
