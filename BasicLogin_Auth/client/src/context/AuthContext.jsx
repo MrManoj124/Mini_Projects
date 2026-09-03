@@ -38,5 +38,33 @@ export const AuthProvider = ({children})=>{
         };
         initAuth();
     }, []);
-    
+
+
+    const login = (userData, userToken) => {
+        setUser(userData);
+        setToken(userToken);
+        setIsAuthenticated(true);
+        localStorage.setItem('token', userToken);
+};
+
+const logout = () => {
+    setUser(null);
+    setToken(null);
+    setIsAuthenticated(false);
+    localStorage.removeItem('token');
+};
+
+const updateUser = (userData) => {
+    setUser(userData);
+};
+
+const value = {
+    user, token, loading, isAuthenticated, login, logout, updateUser
+};
+
+return(
+    <AuthContext.provider value={value}>
+        {children}
+    </AuthContext.provider>
+);
 }
