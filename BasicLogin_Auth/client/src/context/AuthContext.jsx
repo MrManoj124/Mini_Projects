@@ -9,5 +9,34 @@ export const AuthProvider = ({children})=>{
     const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+    // Initialize navigate function
+    useEffect(() => {
+        const initAuth = async () =>{
+            const savedToken = localStorage.getItem('token';
+
+                if(savedToken){
+                    try{
+                        const data = await getUserProfile(savedToken);
+                        if(data.success){
+                            setUser(data.user);
+                            setToken(savedToken);
+                            setIsAuthenticated(true);
+                        }else{
+                            localStorage.removeItem('token');
+                            setToken(null);
+                            setIsAuthenticated(false);
+                        }
+                    }catch(error){
+                        console.error('Auth Initialization failed', error);
+                        localStorage.removeItem('token');
+                        setToken(null);
+                        setIsAuthenticated(false);
+                    }
+                }
+
+                setLoading(false);
+        };
+        initAuth();
+    }, []);
     
 }
