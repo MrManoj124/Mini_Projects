@@ -22,4 +22,17 @@ export const validatePasswordStrength = (password) => {
     return 'Strong';
 };
 
-//
+//Name validation
+export const validateName = (name) => {
+    return name.length >= 2 && name.length <= 50;
+};
+
+//Check if passwords match
+export const validatePasswordMatch = (password, confirmPassword) => {
+    return password === confirmPassword;
+};
+
+//Sanitize input to prevent XSS attacks
+export const sanitizeInput = (input) => {
+    return input.trim().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+};
