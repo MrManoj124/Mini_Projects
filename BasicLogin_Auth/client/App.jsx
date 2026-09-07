@@ -39,7 +39,7 @@ function PublicRoute({children}){
                 <div className="spinner"></div>
                 <p>Loading...</p>
             </div>
-   
+        );
     }
     return !isAuthenticated  ? children : <Navigate to="/dashboard"/>;
 }
@@ -48,16 +48,16 @@ function PublicRoute({children}){
 function AppRoutes() {
   const { isAuthenticated } = useContext(AuthContext);
 
-return (
-    <>
-      {isAuthenticated && <Navbar />}
-      <Routes>
-        {/* Public Routes */}
-        <Route 
-          path="/login" 
-          element={
-            <PublicRoute>
-              <LoginForm />
-            </PublicRoute>
-          } 
-        />
+        return (
+            <>
+            {isAuthenticated && <Navbar />}
+            <Routes>
+                {/* Public Routes */}
+                <Route 
+                path="/login" 
+                element={
+                    <PublicRoute>
+                    <LoginForm />
+                    </PublicRoute>
+                } 
+                />
