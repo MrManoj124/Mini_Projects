@@ -90,3 +90,7 @@ function AppRoutes() {
                         </ProtectedRoute>
                     } 
                     />
+            </Routes>
+            </>
+        );
+    }   
