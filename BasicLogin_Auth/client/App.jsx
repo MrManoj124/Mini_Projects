@@ -61,3 +61,11 @@ function AppRoutes() {
                     </PublicRoute>
                 } 
                 />
+                 <Route 
+                    path="/register" 
+                    element={
+                        <PublicRoute>
+                        <RegisterForm />
+                        </PublicRoute>
+                    } 
+                />
