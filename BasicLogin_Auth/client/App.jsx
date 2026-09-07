@@ -45,6 +45,9 @@ function PublicRoute({children}){
 }
 
 
+function AppRoutes() {
+  const { isAuthenticated } = useContext(AuthContext);
+
 return (
     <>
       {isAuthenticated && <Navbar />}
