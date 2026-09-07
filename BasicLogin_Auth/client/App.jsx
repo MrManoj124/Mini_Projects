@@ -74,3 +74,11 @@ function AppRoutes() {
                     <Route path="/verify-email" element={<VerifyEmail />} />
 
                     {/* Protected Routes */}
+                <Route 
+                    path="/dashboard" 
+                    element={
+                        <ProtectedRoute>
+                        <Dashboard />
+                        </ProtectedRoute>
+                    } 
+                    />
