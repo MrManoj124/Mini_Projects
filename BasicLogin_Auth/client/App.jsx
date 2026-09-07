@@ -97,3 +97,17 @@ function AppRoutes() {
             </>
         );
     }   
+
+function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        <div className="App">
+          <AppRoutes />
+        </div>
+      </AuthProvider>
+    </Router>
+  );
+
+
+  export default App;
