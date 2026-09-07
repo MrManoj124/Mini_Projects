@@ -1,0 +1,13 @@
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {AuthProvider} from "./context/AuthContext";
+import LoginForm from './components/JsFiles/LoginForm ';
+import RegisterForm from './components/JsFiles/RegisterForm';
+import ForgotPassword from './components/JsFiles/ForgotPassword';
+import ResetPassword from './components/JsFiles/ResetPassword';
+import VerifyEmail from './components/JsFiles/VerifyEmail';
+import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
+import Navbar from './components/JsFiles/Navbar';
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
+import './App.css';
