@@ -82,3 +82,11 @@ function AppRoutes() {
                         </ProtectedRoute>
                     } 
                     />
+                     <Route 
+                    path="/profile" 
+                    element={
+                        <ProtectedRoute>
+                        <Profile />
+                        </ProtectedRoute>
+                    } 
+                    />
