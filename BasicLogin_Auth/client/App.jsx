@@ -41,4 +41,5 @@ function PublicRoute({children}){
             </div>
         );
     }
+    return !isAuthenticated  ? children : <Navigate to="/dashboard"/>;
 }
