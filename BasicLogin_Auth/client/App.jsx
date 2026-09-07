@@ -27,3 +27,18 @@ function ProtectedRoute({ children }) {
 
   return isAuthenticated ? children : <Navigate to="/login" />;
 }
+
+
+//Public Route Component
+function PublicRoute({children}){
+    const{isAuthenticated, loading} = useContext(AuthContext);
+
+    if(loading){
+        return (
+            <div className="loading-screen">
+                <div className="spinner"></div>
+                <p>Loading...</p>
+            </div>
+        );
+    }
+}
