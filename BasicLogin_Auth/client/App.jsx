@@ -11,3 +11,19 @@ import Navbar from './components/JsFiles/Navbar';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import './App.css';
+
+// Protected Route Component
+function ProtectedRoute({ children }) {
+  const { isAuthenticated, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <div className="spinner"></div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  return isAuthenticated ? children : <Navigate to="/login" />;
+}
