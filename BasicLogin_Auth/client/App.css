@@ -1,0 +1,17 @@
+.App {
+  min-height: 100vh;
+}
+
+.loading-screen {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  color: #667085;
+  background: #f4f7fb;
+}
+
+.loading-screen .spinner {
+  margin-bottom: 4px;
+}
